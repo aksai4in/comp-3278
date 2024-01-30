@@ -1,0 +1,44 @@
+<button mat-raised-button color="accent" (click)="getInnerHtml()">Send to my email</button>
+<mat-card id="title">
+    <mat-card-content>  
+        {{course.course_id}} {{course.subclass}} {{course.name}}
+    </mat-card-content>
+</mat-card>
+<div>
+    <mat-card>
+        <mat-card-content>
+          <h3>Instructors: </h3>
+            <mat-list>
+                <mat-list-item *ngFor="let instructor of instructors">
+                <span matListItemTitle>{{ instructor.name }}</span>
+                <span matListItemLine >Email:<a href="mailto:{{instructor.email}}">{{ instructor.email }}</a></span>
+                <span matListItemLine >Office:{{ instructor.office }}</span>
+                </mat-list-item>
+            </mat-list>
+            <h3>Teaching Assistants: </h3>
+            <mat-list>
+                <mat-list-item *ngFor="let ta of tas">
+                <span matListItemTitle>{{ ta.name }}</span>
+                <span matListItemLine >Email:<a href="mailto:{{ta.email}}">{{ ta.email }}</a></span>
+                </mat-list-item>
+            </mat-list>
+            <h3>Zoom: </h3>
+            <a href="{{course.zoom_link}}">{{course.zoom_link}}</a>
+            
+            <h3>Lecture Notes: </h3>
+            <mat-list>
+                <mat-list-item *ngFor="let note of lectureNotes">
+                <a href="{{note.link}}"  >{{note.name}}</a>
+                </mat-list-item>
+            </mat-list>
+
+            <h3>Tutorial Notes: </h3>
+            <mat-list>
+                <mat-list-item *ngFor="let note of tutorialNotes">
+                <a href="{{note.link}}"  >{{note.name}}</a>
+                </mat-list-item>
+            </mat-list>
+          <!-- Add other properties as needed -->
+        </mat-card-content>
+      </mat-card>
+</div>
