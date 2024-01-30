@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { UserServicesService } from './user-services.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'course-system';
+  ngOnInit() {
+    window.addEventListener('beforeunload', this.beforeunloadHandler);
+  }
+  constructor(private userServices:UserServicesService){
+  }
+  
+  beforeunloadHandler(event:Event) {
+    var student_id = sessionStorage.getItem('student_id');
+    if(student_id){
+      this.userServices.logout({'student_id': student_id})
+    }
+  }
 }

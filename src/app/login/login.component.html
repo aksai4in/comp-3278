@@ -1,0 +1,16 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="300px">
+            <mat-toolbar color="primary">Login Page</mat-toolbar>
+            <mat-error fxLayoutAlign="center center" *ngIf="incorrectCredentials">{{error}}</mat-error>
+            <form [formGroup]="loginForm" (submit)="login($event)" fxLayoutAlign="stretch" fxLayout="column" class="loginForm">
+                <mat-form-field >
+                    <input formControlName="username" matInput placeholder="Username">
+                </mat-form-field>
+            
+                <mat-form-field >
+                    <input formControlName="password" matInput type="password" placeholder="Password">
+                </mat-form-field>
+                <button mat-raised-button type="submit" >Login</button>
+            </form>
+    </mat-card>
+</div>
